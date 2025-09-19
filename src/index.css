@@ -6,6 +6,10 @@
 All colors MUST be HSL - Earth tones, Agricultural greens, Sky blues
 */
 
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
 @layer base {
   :root {
     /* Base colors - Soft cream background with dark green text */

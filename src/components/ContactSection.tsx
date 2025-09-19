@@ -32,7 +32,7 @@ const contactInfo = [
     icon: Mail,
     title: 'Email Support',
     subtitle: 'Technical Queries',
-    contact: 'support@krishibuddhi.gov.in',
+    contact: 'support@krishikalyan.gov.in',
     description: 'Response within 24 hours',
     action: 'Send Email',
     color: 'success',

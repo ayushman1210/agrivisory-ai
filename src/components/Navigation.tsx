@@ -1,46 +1,89 @@
-import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
+import React, { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
-import { useLanguage } from '@/contexts/LanguageContext';
-import logoImage from '@/assets/logo.png';
-import { Wheat, Globe, Phone, BookOpen, MapPin, Users, Menu, X } from 'lucide-react';
+} from "@/components/ui/select";
+import { useLanguage } from "@/contexts/LanguageContext";
+import logoImage from "@/assets/logo.png";
+import { Wheat, Globe, Phone, BookOpen, MapPin, Users, Menu, X } from "lucide-react";
 
 const Navigation = () => {
   const { language, setLanguage, t, languages } = useLanguage();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [location, setLocation] = useState("Detecting...");
+
+  // Auto-detect location
+  useEffect(() => {
+    if (!navigator.geolocation) {
+      setLocation("Location not supported");
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      async ({ coords }) => {
+        const { latitude, longitude } = coords;
+
+        try {
+          // Use OpenStreetMap Nominatim API for reverse geocoding
+          const res = await fetch(
+            `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
+          );
+          const data = await res.json();
+
+          const city =
+            data.address.city ||
+            data.address.town ||
+            data.address.village ||
+            data.address.state ||
+            "Unknown";
+
+          setLocation(city);
+        } catch (err) {
+          console.error("Reverse geocoding failed:", err);
+          setLocation("Location unavailable");
+        }
+      },
+      (err) => {
+        console.error("Geolocation error:", err);
+        setLocation("Location blocked");
+      },
+      { enableHighAccuracy: true, timeout: 10000 }
+    );
+  }, []);
 
   const navigationItems = [
-    { key: 'home', icon: Wheat, href: '#home' },
-    { key: 'govTrainer', icon: Users, href: '#trainer' },
-    { key: 'fertilizer', icon: MapPin, href: '#fertilizer' },
-    { key: 'schemes', icon: BookOpen, href: '#schemes' },
-    { key: 'contact', icon: Phone, href: '#contact' },
+    { key: "home", icon: Wheat, href: "#home" },
+    { key: "govTrainer", icon: Users, href: "#trainer" },
+    { key: "fertilizer", icon: MapPin, href: "#fertilizer" },
+    { key: "schemes", icon: BookOpen, href: "#schemes" },
+    { key: "contact", icon: Phone, href: "#contact" },
   ];
 
   return (
     <nav className="fixed top-0 w-full bg-card/80 backdrop-blur-lg border-b border-border/50 z-50 shadow-card">
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo + Location */}
           <div className="flex items-center space-x-3">
             <div className="w-12 h-12 bg-white rounded-lg p-1 shadow-md">
-              <img 
-                src={logoImage} 
-                alt="कृषि बुद्धि Logo" 
+              <img
+                src={logoImage}
+                alt="Krishi Kalyan &hearts;"
                 className="w-full h-full object-contain"
               />
             </div>
-            <div className="hidden md:block">
-              <h1 className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                कृषि बुद्धि
+            <div>
+              <h1 className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent hidden md:block">
+               Krishi Kalyan &hearts;
               </h1>
-              <p className="text-xs text-muted-foreground">AI Farm Intelligence</p>
+              <div className="flex items-center text-sm text-muted-foreground">
+                <MapPin className="w-4 h-4 mr-1 text-primary" />
+                <span>{location}</span>
+              </div>
             </div>
           </div>
 
@@ -56,7 +99,7 @@ const Navigation = () => {
                   className="flex items-center space-x-2 hover:bg-primary/10 hover:text-primary transition-smooth"
                   onClick={() => {
                     const element = document.querySelector(item.href);
-                    element?.scrollIntoView({ behavior: 'smooth' });
+                    element?.scrollIntoView({ behavior: "smooth" });
                   }}
                 >
                   <Icon className="w-4 h-4" />
@@ -66,7 +109,7 @@ const Navigation = () => {
             })}
           </div>
 
-          {/* Language Selector */}
+          {/* Language Selector + Mobile Menu */}
           <div className="flex items-center space-x-3">
             <Select value={language} onValueChange={setLanguage}>
               <SelectTrigger className="w-[140px] bg-background/80 border-primary/20 hover:border-primary/40 transition-smooth">
@@ -80,7 +123,9 @@ const Navigation = () => {
                   <SelectItem key={lang.code} value={lang.code}>
                     <div className="flex items-center space-x-2">
                       <span>{lang.native}</span>
-                      <span className="text-muted-foreground text-sm">({lang.name})</span>
+                      <span className="text-muted-foreground text-sm">
+                        ({lang.name})
+                      </span>
                     </div>
                   </SelectItem>
                 ))}
@@ -113,7 +158,7 @@ const Navigation = () => {
                     className="flex items-center justify-start space-x-2 hover:bg-primary/10 w-full"
                     onClick={() => {
                       const element = document.querySelector(item.href);
-                      element?.scrollIntoView({ behavior: 'smooth' });
+                      element?.scrollIntoView({ behavior: "smooth" });
                       setIsMobileMenuOpen(false);
                     }}
                   >

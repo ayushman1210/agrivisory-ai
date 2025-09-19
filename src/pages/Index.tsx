@@ -42,7 +42,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8 text-center md:text-left">
             <div>
-              <h3 className="font-bold text-xl mb-4">कृषि बुद्धि</h3>
+              <h3 className="font-bold text-xl mb-4">Krishi Kalyan &hearts; </h3>
               <p className="text-primary-foreground/80">
                 AI-powered farming intelligence for modern agriculture
               </p>
@@ -60,13 +60,13 @@ const Index = () => {
               <h4 className="font-semibold mb-4">Support</h4>
               <ul className="space-y-2 text-primary-foreground/80">
                 <li>Helpline: 1800-180-1551</li>
-                <li>Email: support@krishibuddhi.gov.in</li>
+                <li>Email: support@buddhi.gov.in</li>
                 <li>WhatsApp: +91-9876543200</li>
               </ul>
             </div>
           </div>
           <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-primary-foreground/80">
-            <p>&copy; 2024 कृषि बुद्धि - Government of India Initiative</p>
+            <p>&copy; 2024 krishi kalyan &hearts; - Government of India Initiative</p>
           </div>
         </div>
       </footer>
