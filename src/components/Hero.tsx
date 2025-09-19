@@ -10,6 +10,7 @@ import {
   Wheat, TrendingUp, Cloud, MapPin, BarChart3,
   Users, Shield, Zap, ArrowRight, Loader2
 } from 'lucide-react';
+   import { Link } from "react-router-dom";
 
 const Hero = () => {
   const { t } = useLanguage();
@@ -113,14 +114,32 @@ const Hero = () => {
             </motion.div>
 
             {/* Buttons */}
-            <motion.div variants={textVariant} className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-white text-primary hover:bg-white/90 hover:shadow-glow transition-smooth">
-                <TrendingUp className="w-5 h-5 mr-2" /> {t('predictCrop')} <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-              <Button variant="outline" size="lg" className="border-white/30 text-black hover:bg-white/10 backdrop-blur-sm">
-                <Users className="w-5 h-5 mr-2" /> Get Training
-              </Button>
-            </motion.div>
+       
+
+<motion.div variants={textVariant} className="flex flex-col sm:flex-row gap-4">
+  {/* ✅ Predict Crop Button */}
+  <Link to="/crop-prediction">
+    <Button
+      size="lg"
+      className="bg-white text-primary hover:bg-white/90 hover:shadow-glow transition-smooth"
+    >
+      <TrendingUp className="w-5 h-5 mr-2" /> {t("predictCrop")}
+      <ArrowRight className="w-4 h-4 ml-2" />
+    </Button>
+  </Link>
+
+  {/* Training Button */}
+  <Link to="/government-trainer">
+    <Button
+      variant="outline"
+      size="lg"
+      className="border-white/30 text-black hover:bg-white/10 backdrop-blur-sm"
+    >
+      <Users className="w-5 h-5 mr-2" /> Get Training
+    </Button>
+  </Link>
+</motion.div>
+
 
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8">
