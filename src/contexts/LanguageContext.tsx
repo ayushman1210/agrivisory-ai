@@ -59,6 +59,26 @@ const translations: Translations = {
     
     // Language
     language: 'Language',
+    
+    // Errors and Messages
+    error: 'Error',
+    fillAllFields: 'Please fill all the required fields',
+    predictionComplete: 'Prediction Complete!',
+    bestCrop: 'Best crop for your conditions',
+    predictionFailed: 'Prediction Failed',
+    tryAgain: 'Unable to get crop prediction. Please try again.',
+    
+    // Fertilizer Section
+    dealers: 'Dealers',
+    findDealers: 'Find Dealers',
+    searchPlaceholder: 'Enter your location or dealer name...',
+    useGPS: 'Use GPS',
+    availableProducts: 'Available Products',
+    callNow: 'Call Now',
+    getDirections: 'Get Directions',
+    checkDelivery: 'Check Delivery',
+    emergencyHelpline: 'Emergency Fertilizer Helpline',
+    emergencySupport: '24/7 support for urgent fertilizer requirements',
   },
   
   hi: {
@@ -113,6 +133,26 @@ const translations: Translations = {
     
     // Language
     language: 'भाषा',
+    
+    // Errors and Messages  
+    error: 'त्रुटि',
+    fillAllFields: 'कृपया सभी आवश्यक फील्ड भरें',
+    predictionComplete: 'भविष्यवाणी पूर्ण!',
+    bestCrop: 'आपकी स्थितियों के लिए सर्वोत्तम फसल',
+    predictionFailed: 'भविष्यवाणी असफल',
+    tryAgain: 'फसल की भविष्यवाणी प्राप्त करने में असमर्थ। कृपया पुनः प्रयास करें।',
+    
+    // Fertilizer Section
+    dealers: 'डीलर',
+    findDealers: 'डीलर खोजें',
+    searchPlaceholder: 'अपना स्थान या डीलर का नाम दर्ज करें...',
+    useGPS: 'GPS का उपयोग करें',
+    availableProducts: 'उपलब्ध उत्पाद',
+    callNow: 'अभी कॉल करें',
+    getDirections: 'दिशा-निर्देश प्राप्त करें',
+    checkDelivery: 'डिलीवरी जांचें',
+    emergencyHelpline: 'आपातकालीन उर्वरक हेल्पलाइन',
+    emergencySupport: 'तत्काल उर्वरक आवश्यकताओं के लिए 24/7 सहायता',
   },
   
   mr: {
@@ -167,6 +207,26 @@ const translations: Translations = {
     
     // Language
     language: 'भाषा',
+    
+    // Errors and Messages
+    error: 'त्रुटी',
+    fillAllFields: 'कृपया सर्व आवश्यक फील्ड भरा',
+    predictionComplete: 'अंदाज पूर्ण!',
+    bestCrop: 'तुमच्या परिस्थितीसाठी सर्वोत्तम पीक',
+    predictionFailed: 'अंदाज अयशस्वी',
+    tryAgain: 'पीक अंदाज मिळवण्यात अक्षम। कृपया पुन्हा प्रयत्न करा।',
+    
+    // Fertilizer Section
+    dealers: 'डीलर',
+    findDealers: 'डीलर शोधा',
+    searchPlaceholder: 'तुमचे स्थान किंवा डीलरचे नाव टाका...',
+    useGPS: 'GPS वापरा',
+    availableProducts: 'उपलब्ध उत्पादने',
+    callNow: 'आता कॉल करा',
+    getDirections: 'दिशा-निर्देश मिळवा',
+    checkDelivery: 'डिलिव्हरी तपासा',
+    emergencyHelpline: 'आपत्कालीन खत हेल्पलाइन',
+    emergencySupport: 'तातडीच्या खत गरजांसाठी 24/7 सहाय्य',
   },
   
   kn: {
@@ -221,6 +281,26 @@ const translations: Translations = {
     
     // Language
     language: 'ಭಾಷೆ',
+    
+    // Errors and Messages
+    error: 'ದೋಷ',
+    fillAllFields: 'ದಯವಿಟ್ಟು ಎಲ್ಲಾ ಅಗತ್ಯ ಕ್ಷೇತ್ರಗಳನ್ನು ತುಂಬಿಸಿ',
+    predictionComplete: 'ಭವಿಷ್ಯವಾಣಿ ಪೂರ್ಣಗೊಂಡಿದೆ!',
+    bestCrop: 'ನಿಮ್ಮ ಪರಿಸ್ಥಿತಿಗಳಿಗೆ ಅತ್ಯುತ್ತಮ ಬೆಳೆ',
+    predictionFailed: 'ಭವಿಷ್ಯವಾಣಿ ವಿಫಲವಾಗಿದೆ',
+    tryAgain: 'ಬೆಳೆ ಭವಿಷ್ಯವಾಣಿ ಪಡೆಯಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ।',
+    
+    // Fertilizer Section
+    dealers: 'ವ್ಯಾಪಾರಿಗಳು',
+    findDealers: 'ವ್ಯಾಪಾರಿಗಳನ್ನು ಹುಡುಕಿ',
+    searchPlaceholder: 'ನಿಮ್ಮ ಸ್ಥಳ ಅಥವಾ ವ್ಯಾಪಾರಿಯ ಹೆಸರನ್ನು ನಮೂದಿಸಿ...',
+    useGPS: 'GPS ಬಳಸಿ',
+    availableProducts: 'ಲಭ್ಯವಿರುವ ಉತ್ಪಾದನೆಗಳು',
+    callNow: 'ಈಗ ಕರೆ ಮಾಡಿ',
+    getDirections: 'ದಿಕ್ಕುಗಳನ್ನು ಪಡೆಯಿರಿ',
+    checkDelivery: 'ವಿತರಣೆ ಪರಿಶೀಲಿಸಿ',
+    emergencyHelpline: 'ತುರ್ತು ಗೊಬ್ಬರ ಸಹಾಯವಾಣಿ',
+    emergencySupport: 'ತುರ್ತು ಗೊಬ್ಬರ ಅಗತ್ಯಗಳಿಗೆ 24/7 ಬೆಂಬಲ',
   },
 };
 

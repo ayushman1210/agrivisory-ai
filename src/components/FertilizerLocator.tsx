@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useLanguage } from '@/contexts/LanguageContext';
+import bannerImage from '@/assets/agro-banner.jpg';
 import { MapPin, Phone, Clock, Star, Navigation, Search, Truck } from 'lucide-react';
 
 // Mock fertilizer dealer data
@@ -73,14 +74,27 @@ const FertilizerLocator = () => {
 
   return (
     <div id="fertilizer" className="container mx-auto px-4 py-8 space-y-8">
-      {/* Header */}
-      <div className="text-center space-y-4 animate-slide-up">
-        <h2 className="text-3xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-          {t('fertilizer')} Dealers
-        </h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
-          Find verified fertilizer dealers and agro-input suppliers near your location
-        </p>
+      {/* Header with Banner */}
+      <div className="text-center space-y-6 animate-slide-up">
+        <div 
+          className="relative h-32 rounded-lg overflow-hidden bg-gradient-primary"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(${bannerImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}
+        >
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-center text-white">
+              <h2 className="text-3xl font-bold">
+                {t('fertilizer')} {t('dealers') || 'Dealers'}
+              </h2>
+              <p className="text-white/90 max-w-2xl mx-auto mt-2">
+                {t('findDealers') || 'Find verified fertilizer dealers and agro-input suppliers near your location'}
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Search Bar */}
@@ -89,7 +103,7 @@ const FertilizerLocator = () => {
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="flex-1">
               <Input
-                placeholder="Enter your location or dealer name..."
+                placeholder={t('searchPlaceholder') || 'Enter your location or dealer name...'}
                 value={searchLocation}
                 onChange={(e) => setSearchLocation(e.target.value)}
                 className="border-primary/20 focus:border-primary"
@@ -100,14 +114,14 @@ const FertilizerLocator = () => {
               className="bg-gradient-primary hover:shadow-glow transition-smooth"
             >
               <Search className="w-4 h-4 mr-2" />
-              Find Dealers
+              {t('findDealers') || 'Find Dealers'}
             </Button>
             <Button 
               variant="outline"
               className="border-primary/20 hover:bg-primary/10"
             >
               <Navigation className="w-4 h-4 mr-2" />
-              Use GPS
+              {t('useGPS') || 'Use GPS'}
             </Button>
           </div>
         </CardContent>
@@ -164,7 +178,7 @@ const FertilizerLocator = () => {
                   </div>
 
                   <div>
-                    <h4 className="font-medium mb-2">Available Products:</h4>
+                    <h4 className="font-medium mb-2">{t('availableProducts') || 'Available Products'}:</h4>
                     <div className="flex flex-wrap gap-2">
                       {dealer.products.map((product, idx) => (
                         <span
@@ -180,28 +194,28 @@ const FertilizerLocator = () => {
 
                 {/* Actions */}
                 <div className="space-y-3">
-                  <Button 
-                    className="w-full bg-gradient-primary hover:shadow-glow transition-smooth"
-                    onClick={() => window.open(`tel:${dealer.phone}`, '_self')}
-                  >
-                    <Phone className="w-4 h-4 mr-2" />
-                    Call Now
-                  </Button>
-                  <Button 
-                    variant="outline"
-                    className="w-full border-primary/20 hover:bg-primary/10"
-                    onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(dealer.address)}`, '_blank')}
-                  >
-                    <MapPin className="w-4 h-4 mr-2" />
-                    Get Directions
-                  </Button>
-                  <Button 
-                    variant="outline"
-                    className="w-full border-success/20 hover:bg-success/10 text-success"
-                  >
-                    <Truck className="w-4 h-4 mr-2" />
-                    Check Delivery
-                  </Button>
+                    <Button 
+                      className="w-full bg-gradient-primary hover:shadow-glow transition-smooth"
+                      onClick={() => window.open(`tel:${dealer.phone}`, '_self')}
+                    >
+                      <Phone className="w-4 h-4 mr-2" />
+                      {t('callNow') || 'Call Now'}
+                    </Button>
+                    <Button 
+                      variant="outline"
+                      className="w-full border-primary/20 hover:bg-primary/10"
+                      onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(dealer.address)}`, '_blank')}
+                    >
+                      <MapPin className="w-4 h-4 mr-2" />
+                      {t('getDirections') || 'Get Directions'}
+                    </Button>
+                    <Button 
+                      variant="outline"
+                      className="w-full border-success/20 hover:bg-success/10 text-success"
+                    >
+                      <Truck className="w-4 h-4 mr-2" />
+                      {t('checkDelivery') || 'Check Delivery'}
+                    </Button>
                 </div>
               </div>
             </CardContent>
@@ -212,9 +226,9 @@ const FertilizerLocator = () => {
       {/* Emergency Contacts */}
       <Card className="shadow-card border-primary/20 hover:shadow-glow transition-smooth animate-slide-up">
         <CardHeader className="bg-gradient-accent text-accent-foreground rounded-t-lg">
-          <CardTitle>Emergency Fertilizer Helpline</CardTitle>
+          <CardTitle>{t('emergencyHelpline') || 'Emergency Fertilizer Helpline'}</CardTitle>
           <CardDescription className="text-accent-foreground/80">
-            24/7 support for urgent fertilizer requirements
+            {t('emergencySupport') || '24/7 support for urgent fertilizer requirements'}
           </CardDescription>
         </CardHeader>
         <CardContent className="p-6">

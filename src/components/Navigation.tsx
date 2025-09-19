@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import {
   Select,
@@ -8,10 +8,12 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Wheat, Globe, Phone, BookOpen, MapPin, Users } from 'lucide-react';
+import logoImage from '@/assets/logo.png';
+import { Wheat, Globe, Phone, BookOpen, MapPin, Users, Menu, X } from 'lucide-react';
 
 const Navigation = () => {
   const { language, setLanguage, t, languages } = useLanguage();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navigationItems = [
     { key: 'home', icon: Wheat, href: '#home' },
@@ -27,8 +29,12 @@ const Navigation = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center animate-pulse-glow">
-              <Wheat className="w-6 h-6 text-primary-foreground" />
+            <div className="w-12 h-12 bg-white rounded-lg p-1 shadow-md">
+              <img 
+                src={logoImage} 
+                alt="कृषि बुद्धि Logo" 
+                className="w-full h-full object-contain"
+              />
             </div>
             <div className="hidden md:block">
               <h1 className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
@@ -86,35 +92,39 @@ const Navigation = () => {
               variant="outline"
               size="sm"
               className="lg:hidden border-primary/20 hover:bg-primary/10"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              ☰
+              {isMobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </Button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
-        <div className="lg:hidden mt-4 pb-2">
-          <div className="grid grid-cols-2 gap-2">
-            {navigationItems.map((item) => {
-              const Icon = item.icon;
-              return (
-                <Button
-                  key={item.key}
-                  variant="ghost"
-                  size="sm"
-                  className="flex items-center justify-start space-x-2 hover:bg-primary/10"
-                  onClick={() => {
-                    const element = document.querySelector(item.href);
-                    element?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                >
-                  <Icon className="w-4 h-4" />
-                  <span className="text-sm">{t(item.key)}</span>
-                </Button>
-              );
-            })}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden mt-4 pb-2 border-t border-border/50 pt-4 animate-slide-up">
+            <div className="grid grid-cols-1 gap-2">
+              {navigationItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <Button
+                    key={item.key}
+                    variant="ghost"
+                    size="sm"
+                    className="flex items-center justify-start space-x-2 hover:bg-primary/10 w-full"
+                    onClick={() => {
+                      const element = document.querySelector(item.href);
+                      element?.scrollIntoView({ behavior: 'smooth' });
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    <Icon className="w-4 h-4" />
+                    <span className="text-sm">{t(item.key)}</span>
+                  </Button>
+                );
+              })}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </nav>
   );
